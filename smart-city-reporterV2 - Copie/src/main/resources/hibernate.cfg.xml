@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database Connection Settings -->
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/signalement_urbain?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+
+        <!-- JDBC Connection Pool (using default) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL Dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- Auto-generate schema (create/update) for easier testing, though user has SQL script -->
+        <property name="hbm2ddl.auto">update</property>
+
+        <!-- Mapping Classes -->
+        <mapping class="com.examen.signalement.model.Utilisateur"/>
+        <mapping class="com.examen.signalement.model.Signalement"/>
+
+    </session-factory>
+</hibernate-configuration>

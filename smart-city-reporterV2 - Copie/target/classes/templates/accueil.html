@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCity Reporter | Excellence Urbaine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --accent: #00d9ff;
+            --dark: #1a1a2e;
+            --light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* === NAVBAR PREMIUM === */
+        .navbar-premium {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-premium.scrolled {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            font-weight: 800;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .brand-icon:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        .brand-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .brand-text span {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn-login {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+            color: white;
+        }
+
+        /* === HERO SECTION === */
+        .hero-section {
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        .hero-carousel .carousel-item img {
+            height: 70vh;
+            min-height: 500px;
+            object-fit: cover;
+            filter: brightness(0.4);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.3), rgba(0, 217, 255, 0.2));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        /* === FORM CARD === */
+        .form-section {
+            margin-top: -150px;
+            position: relative;
+            z-index: 10;
+            padding-bottom: 80px;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .form-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 15px 35px rgba(0, 102, 255, 0.3);
+        }
+
+        .form-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .form-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .form-subtitle {
+            color: #6c757d;
+            font-size: 15px;
+        }
+
+        /* === FORM INPUTS === */
+        .form-floating-custom {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .form-floating-custom label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-floating-custom .form-control,
+        .form-floating-custom .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px 18px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+        }
+
+        .form-floating-custom .form-control:focus,
+        .form-floating-custom .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(0, 102, 255, 0.1);
+            background: white;
+        }
+
+        .form-floating-custom .input-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            color: #adb5bd;
+        }
+
+        /* === SUBMIT BUTTON === */
+        .btn-submit-premium {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-submit-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.4);
+            color: white;
+        }
+
+        .btn-submit-premium i {
+            font-size: 20px;
+        }
+
+        /* === SUCCESS ALERT === */
+        .alert-success-custom {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: none;
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(40, 167, 69, 0.15);
+        }
+
+        .alert-success-custom .alert-icon {
+            width: 50px;
+            height: 50px;
+            background: #28a745;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert-success-custom .alert-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        /* === FOOTER === */
+        .footer-premium {
+            background: var(--dark);
+            padding: 60px 0 40px;
+            color: white;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand span {
+            color: var(--accent);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            padding-top: 25px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            margin: 0;
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .form-card {
+                padding: 30px 20px;
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar-premium sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="/" class="brand-logo">
+                <div class="brand-icon">SC</div>
+                <div class="brand-text">Smart<span>City</span></div>
+            </a>
+            <a th:href="@{/login}" class="btn btn-login">
+                <i class="bi bi-person-circle me-2"></i>Connexion
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?q=80&w=1920"
+                        class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1920"
+                        class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920"
+                        class="d-block w-100">
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Bâtissons ensemble<br>la ville de demain</h1>
+            <p class="hero-subtitle">Signalez les problèmes urbains et contribuez à améliorer votre quartier</p>
+        </div>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <!-- Success Alert -->
+                <div th:if="${success}" class="alert-success-custom">
+                    <div class="alert-icon">
+                        <i class="bi bi-check-lg"></i>
+                    </div>
+                    <div>
+                        <strong>Signalement envoyé avec succès !</strong>
+                        <p class="mb-0 text-muted small" th:text="${success}"></p>
+                    </div>
+                </div>
+
+                <div class="form-header">
+                    <div class="form-icon">
+                        <i class="bi bi-megaphone"></i>
+                    </div>
+                    <h2 class="form-title">Signaler un incident</h2>
+                    <p class="form-subtitle">Votre contribution aide à améliorer la qualité de vie de nos quartiers</p>
+                </div>
+
+                <form action="/ajouter" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating-custom">
+                                <label><i class="bi bi-person me-2"></i>Nom Complet</label>
+                                <input type="text" name="nom" class="form-control" placeholder="Mohammed Alami"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating-custom">
+                                <label><i class="bi bi-envelope me-2"></i>Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="alami@mail.com"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-floating-custom">
+                                <label><i class="bi bi-telephone me-2"></i>Téléphone</label>
+                                <input type="tel" name="telephone" class="form-control" placeholder="+212 6..."
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating-custom">
+                                <label><i class="bi bi-geo-alt me-2"></i>Localisation</label>
+                                <input type="text" name="localisation" class="form-control"
+                                    placeholder="Rue, Quartier..." required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-floating-custom">
+                        <label><i class="bi bi-tag me-2"></i>Catégorie de l'incident</label>
+                        <select class="form-select" name="type">
+                            <option value="ECLAIRAGE">💡 Éclairage public (Lampadaire en panne)</option>
+                            <option value="VOIRIE">🛣️ Voirie (Trou, Chaussée abîmée)</option>
+                            <option value="DECHETS">🗑️ Propreté (Déchets, Décharge sauvage)</option>
+                            <option value="AUTRE">❓ Autre besoin urgent</option>
+                        </select>
+                    </div>
+
+                    <div class="form-floating-custom">
+                        <label><i class="bi bi-chat-text me-2"></i>Description du problème</label>
+                        <textarea class="form-control" name="titre" rows="4"
+                            placeholder="Décrivez les détails de l'incident..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-submit-premium">
+                        <i class="bi bi-send-fill"></i>
+                        ENVOYER LE SIGNALEMENT
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer-premium">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="footer-brand">🏙️ Smart<span>City</span> Reporter</div>
+                    <p class="footer-text">Solution technologique pour la gestion urbaine moderne.<br>Ensemble,
+                        construisons des villes plus intelligentes.</p>
+                </div>
+                <div class="col-lg-6 text-lg-end">
+                    <p class="footer-text mt-4">
+                        <i class="bi bi-geo-alt me-2"></i>EMSI Casablanca<br>
+                        <i class="bi bi-envelope me-2"></i>contact@smartcity.ma
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 SmartCity Reporter - Projet d'innovation EMSI Casablanca</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
