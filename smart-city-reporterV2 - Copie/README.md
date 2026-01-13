@@ -1,10 +1,21 @@
 ![Logo SmartCity](images/logo_emsi.png)
 
-# 🏙️ SmartCity Reporter : Système Hybride de Gestion Urbaine
-> **Réalisé par :** Marwa El Omari Alaoui  
-> **Encadré par :** M. Abderrahim Larhlimi  
-> **Établissement :** EMSI Casablanca  
-> **Année Universitaire :** 2025-2026
+<table style="width: 100%; border: none;">
+  <tr>
+    <td width="70%" style="vertical-align: middle;">
+      <h1>SmartCity Reporter : Système Hybride de Gestion Urbaine</h1>
+      <blockquote>
+        <strong>Réalisé par :</strong> Marwa El Omari Alaoui<br>
+        <strong>Encadré par :</strong> M. Abderrahim Larhlimi<br>
+        <strong>Établissement :</strong> EMSI Casablanca<br>
+        <strong>Année Universitaire :</strong> 2025-2026
+      </blockquote>
+    </td>
+    <td width="30%" align="center" style="vertical-align: middle;">
+      <img src="images/MARWA.jpg" width="150" style="border-radius: 50%; border: 3px solid #ddd; padding: 2px;" alt="Marwa El Omari Alaoui">
+    </td>
+  </tr>
+</table>
 
 ---
 
